@@ -3,7 +3,8 @@
 /**
  * 1-swap.c -swaps the values of two integers.
  * second code 
- * @n: void swap_int
+ * @a: pointer to the first variable
+ * @b: pointer to the second variable
  **/
 
 void swap_int(int *a, int *b)
