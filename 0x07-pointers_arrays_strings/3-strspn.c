@@ -1,8 +1,8 @@
 #include "main.h"
 /**
- * _strspn - gets the length of a prefix substring
+ * _strspn - gets the function get the  length of a prefix substring
  * @s: pointer to a string
- * @accept: pointer to a string
+ * @accept: these also a  pointer to a string
  *
  * Return: the number of bytes
  */
