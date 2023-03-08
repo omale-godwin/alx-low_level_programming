@@ -10,7 +10,7 @@
  */
 void print_diagsums(int *a, int size)
 {
-	int i, k, sumdig = 0, sumdig = 0, stp1, stp2;
+	int i, k, sumdig = 0, sumdig2 = 0, stp1, stp2;
 
 	for (i = 0; i <= (size - 1); i++)
 	{
@@ -21,7 +21,7 @@ void print_diagsums(int *a, int size)
 	for (k = 1; k <= size; k++)
 	{
 		stp2 = (size - 1) * k;
-		sumdig = sumdig + *(a + stp2);
+		sumdig2 = sumdig2 + *(a + stp2);
 	}
-	printf("%d, %d\n", sumdig, sumdig);
+	printf("%d, %d\n", sumdig, sumdig2);
 }
