@@ -1,28 +1,30 @@
-/**
- * *create_array - program startup
- * @size: int being evaluated
- * @c: char being evaluated
-(*
- * Description: creates an array of chars
- * and initializes it with a specific char)?
- * Return: return (0) is the required function signature
- */
+#include "holberton.h"
+#include <stdlib.h>
 
-#include "main.h"
+/**
+  * create_array - creates an array of chars
+  * @size: The size of the array
+  * @c: The char to fill in the array
+  *
+  * Return: The array filled
+  */
 char *create_array(unsigned int size, char c)
 {
-	char *array;
-	unsigned int rand;
+	unsigned int i;
+	char *s;
 
-	array = malloc(sizeof(char) * size);
-
-	if (array == NULL || size == 0)
-	{
+	if (size == 0)
 		return (NULL);
-	}
-	for (rand = 0; rand < size; rand++)
+
+	s = malloc(size * sizeof(char));
+
+	if (s == NULL)
+		return (NULL);
+
+	for (i = 0; i < size; i++)
 	{
-		array[rand] = c;
+		s[i] = c;
 	}
-	return (array);
+
+	return (s);
 }
