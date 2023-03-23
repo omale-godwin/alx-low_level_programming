@@ -1,14 +1,15 @@
-#include "function_pointers.h"
+#ifndef FUNCTION_POINTERS_H
+#define FUNCTION_POINTERS_H
 
-/**
- * print_name - Prints a name.
- * @name: The name to be printed.
- * @f: A pointer to a function that prints a name.
+/*
+ * Desc: Header file containing prototypes for all functions
+ *       used in the 0x0E-function_pointers directory.
  */
-void print_name(char *name, void (*f)(char *))
-{
-	if (name == NULL || f == NULL)
-		return;
 
-	f(name);
-}
+#include <stdlib.h>
+
+void print_name(char *name, void (*f)(char *));
+void array_iterator(int *array, size_t size, void (*action)(int));
+int int_index(int *array, int size, int (*cmp)(int));
+
+#endif
