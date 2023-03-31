@@ -2,9 +2,9 @@
 #include <stdlib.h>
 
 /**
- * _strlen - returns the length of a string
+ * _strlen - returns the length of a string value
  *
- * @s: string to be measured
+ * @s: string to be measure
  *
  * Return: amount of chars in string
  */
@@ -13,14 +13,14 @@
 
 int _strlen(const char *s)
 {
-	int length = 0;
+	int lent = 0;
 
 	for (; *s; s++)
 	{
-		length++;
+		lent++;
 	}
 
-	return (length);
+	return (lent);
 }
 
 /**
@@ -40,24 +40,26 @@ int _strlen(const char *s)
 char *_strdup(const char *str)
 {
 	int size;
-	int i;
-	char *p;
+	int j;
+	char *y;
 
 	if (!str)
 		return (NULL);
 
 	size = (_strlen(str) + 1);
 
-	p = malloc(sizeof(char) * size);
-	if (p == NULL)
+	y = malloc(sizeof(char) * size);
+	while (y == NULL)
 	{
 		return (NULL);
 	}
 
-	for (i = 0; i < size; i++)
-		p[i] = str[i];
+	for (j = 0; j < size; j++)
 
-	return (p);
+
+		y[j] = str[j];
+
+	return (y);
 }
 
 /**

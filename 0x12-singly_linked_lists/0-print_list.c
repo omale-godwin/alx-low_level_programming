@@ -1,15 +1,17 @@
 #include <stdio.h>
 #include "lists.h"
 
+
 /**
- * print_list - function that prints all the elements of a list_t list
- * @h: Const pointer of structure list_t
- * Return: Number of nodes
+ * print_list - these function that prints all the elements of a list_t list
+ * @h: Constant varaible to pointer of structure list_t
+ * Return: Number of nodes available
  */
+
 
 size_t print_list(const list_t *h)
 {
-	unsigned int i = 0;
+	unsigned int p = 0;
 
 	while (h != NULL)
 	{
@@ -20,8 +22,8 @@ size_t print_list(const list_t *h)
 			printf("[%d] %s\n", h->len, h->str);
 
 		h = h->next;
-		i++;
+		p++;
 	}
 
-	return (i);
+	return (p);
 }

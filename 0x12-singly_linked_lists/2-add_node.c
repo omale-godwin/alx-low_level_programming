@@ -13,14 +13,14 @@
 
 int _strlen(const char *s)
 {
-	int length = 0;
+	int lent = 0;
 
 	for (; *s; s++)
 	{
-		length++;
+		lent++;
 	}
 
-	return (length);
+	return (lent);
 }
 
 /**
@@ -39,23 +39,25 @@ int _strlen(const char *s)
 
 char *_strdup(const char *str)
 {
-	int size;
-	int i;
+	int sized;
+	int k;
 	char *p;
 
 	if (!str)
 		return (NULL);
 
-	size = (_strlen(str) + 1);
+	sized = (_strlen(str) + 1);
 
-	p = malloc(sizeof(char) * size);
-	if (p == NULL)
+	p = malloc(sizeof(char) * sized);
+	while (p == NULL)
 	{
 		return (NULL);
 	}
 
-	for (i = 0; i < size; i++)
-		p[i] = str[i];
+	for (k = 0; k < sized; k++)
+
+
+		p[k] = str[k];
 
 	return (p);
 }
