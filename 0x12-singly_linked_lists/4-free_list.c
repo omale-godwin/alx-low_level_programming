@@ -1,27 +1,27 @@
 #include "lists.h"
 
 /**
- * free_list - these is a frees memory allocated to a struct type
- * list_t linked list varaible
+ * free_list - frees memory allocated to a struct type
+ * list_t linked list
  *
- * @head: these actually point to first member of list
+ * @head: pointer to first member of list
  */
 
 void free_list(list_t *head)
 {
-	list_t *temps;
+	list_t *temp;
 
 	if (!head)
 		return;
 
 	while (head != NULL)
 	{
-
-		temps = head;
-
+/* point to current head */
+		temp = head;
+/* current head moves one member forward in list */
 		head = head->next;
-
-		free(temps->str);
-		free(temps);
+/* free string and stuct ptr alloc for previous head */
+		free(temp->str);
+		free(temp);
 	}
 }
