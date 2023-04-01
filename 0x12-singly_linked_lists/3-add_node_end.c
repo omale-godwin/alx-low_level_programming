@@ -1,112 +1,48 @@
-#include "lists.h"
 #include <stdlib.h>
+#include <string.h>
+#include "lists.h"
 
 /**
- * _strlen - returns the length of a string
+ * add_node_end - adds a new node at the end of a linked list
+ * @head: double pointer to the list_t list
+ * @str: string to put in the new node
  *
- * @s: string to be measured
- *
- * Return: amount of chars in string
- */
-
-/* temporarily changed to const char * */
-
-int _strlen(const char *s)
-{
-	int length = 0;
-
-	for (; *s; s++)
-	{
-		length++;
-	}
-
-	return (length);
-}
-
-/**
- * _strdup - returns a pointer to a newly allocated
- * space in memory, which contains a copy of the string
- * given as a parameter.
- *
- * @str: string to be copied and used to determine size of
- * memory allocation
- *
- * Return: pointer to first address in the space created
- * in memory
- */
-
-/* temporarily changed to const char * */
-
-char *_strdup(const char *str)
-{
-	int size;
-	int i;
-	char *p;
-
-	if (!str)
-		return (NULL);
-
-	size = (_strlen(str) + 1);
-
-	p = malloc(sizeof(char) * size);
-	if (p == NULL)
-	{
-		return (NULL);
-	}
-
-	for (i = 0; i < size; i++)
-		p[i] = str[i];
-
-	return (p);
-}
-
-/**
- * add_node_end - adds a new node at the end of a struct type
- * list_t linked list
- *
- * @head: pointer to pointer to first member of list
- *
- * @str: string to be inlcuded as member str of new list_t struct node
- *
- * Return: address of new member, or NULL if failed
+ * Return: address of the new element, or NULL if it failed
  */
 
 list_t *add_node_end(list_t **head, const char *str)
 {
-	list_t *new_node;
-	list_t *temp;
+list_t *new_node;
+list_t *last = *head;
+unsigned int len = 0;
 
-	if (!head && !str)
-		return (NULL);
+while (str[len])
+len++;
 
-	new_node = malloc(sizeof(list_t));
-	if (!new_node)
-	{
-		free(new_node);
-		return (NULL);
-	}
-	new_node->str = _strdup(str);
-	if (!(new_node->str))
-	{
-		free(new_node);
-		return (NULL);
-	}
+new_node = malloc(sizeof(list_t));
+if (!new_node)
+return (NULL);
 
-	new_node->len = _strlen(new_node->str);
-	new_node->next = NULL;
+new_node->str = strdup(str);
+if (!new_node->str)
+{
+free(new_node);
+return (NULL);
+}
 
-	if (*head == NULL)
-	{
-		*head = new_node;
-		return (new_node);
-	}
+new_node->len = len;
+new_node->next = NULL;
 
-	temp = *head;
-	while (temp->next != NULL)
-	{
-		temp = temp->next;
-	}
-	temp->next = new_node;
+if (*head == NULL)
+{
+*head = new_node;
+}
+else
+{
+while (last->next)
+last = last->next;
+last->next = new_node;
+}
 
-	return (new_node);
+return (new_node);
 }

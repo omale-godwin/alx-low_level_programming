@@ -8,7 +8,7 @@
  */
 size_t print_list(const list_t *h)
 {
-size_t cnt = 0;
+size_t count = 0;
 const list_t *current = h;
 
 while (current != NULL)
@@ -21,8 +21,8 @@ while (current != NULL)
 	{
 		printf("[0] (nil)\n");
 	}
-	cnt++;
+	count++;
 	current = current->next;
 }
-return (cnt);
+return (count);
 }
