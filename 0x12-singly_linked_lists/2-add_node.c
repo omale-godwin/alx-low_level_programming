@@ -13,14 +13,14 @@
 
 int _strlen(const char *s)
 {
-	int lent = 0;
+	int length = 0;
 
 	for (; *s; s++)
 	{
-		lent++;
+		length++;
 	}
 
-	return (lent);
+	return (length);
 }
 
 /**
@@ -39,31 +39,30 @@ int _strlen(const char *s)
 
 char *_strdup(const char *str)
 {
-	int sized;
-	int k;
+	int size;
+	int i;
 	char *p;
 
 	if (!str)
 		return (NULL);
 
-	sized = (_strlen(str) + 1);
+	size = (_strlen(str) + 1);
 
-	p = malloc(sizeof(char) * sized);
-	while (p == NULL)
+	p = malloc(sizeof(char) * size);
+	if (p == NULL)
 	{
 		return (NULL);
 	}
 
-	for (k = 0; k < sized; k++)
-
-
-		p[k] = str[k];
+	for (i = 0; i < size; i++)
+		p[i] = str[i];
 
 	return (p);
 }
 
 /**
- * add_node - adds a new node at the start of a struct type list_t linked list
+ * add_node_end - adds a new node at the end of a struct type
+ * list_t linked list
  *
  * @head: pointer to pointer to first member of list
  *
@@ -72,9 +71,10 @@ char *_strdup(const char *str)
  * Return: address of new member, or NULL if failed
  */
 
-list_t *add_node(list_t **head, const char *str)
+list_t *add_node_end(list_t **head, const char *str)
 {
 	list_t *new_node;
+	list_t *temp;
 
 	if (!head && !str)
 		return (NULL);
@@ -85,9 +85,7 @@ list_t *add_node(list_t **head, const char *str)
 		free(new_node);
 		return (NULL);
 	}
-
 	new_node->str = _strdup(str);
-
 	if (!(new_node->str))
 	{
 		free(new_node);
@@ -95,10 +93,20 @@ list_t *add_node(list_t **head, const char *str)
 	}
 
 	new_node->len = _strlen(new_node->str);
+	new_node->next = NULL;
 
-	new_node->next = *head;
+	if (*head == NULL)
+	{
+		*head = new_node;
+		return (new_node);
+	}
 
-	*head = new_node;
+	temp = *head;
+	while (temp->next != NULL)
+	{
+		temp = temp->next;
+	}
+	temp->next = new_node;
 
 	return (new_node);
 }
