@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include "lists.h"
-
 /**
  * print_list - prints all the elements of a linked list
  * @h: pointer to the list_t list to print
@@ -9,17 +8,21 @@
  */
 size_t print_list(const list_t *h)
 {
- size_t q = 0;
+size_t cnt = 0;
+const list_t *current = h;
 
- while (h)
- {
- if (!h->str)
- printf("[0] (nil)\n");
- else
- printf("[%u] %s\n", h->len, h->str);
- h = h->next;
- q++;
- }
-
- return (q);
+while (current != NULL)
+{
+	if (current->str != NULL)
+	{
+		printf("[%d] %s\n",current->len, current->str);
+	}
+	else
+	{
+		printf("[0] (nil)\n");
+	}
+	cnt++;
+	current = current->next;
+}
+return (cnt);
 }
