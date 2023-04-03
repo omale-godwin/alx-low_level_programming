@@ -10,8 +10,7 @@
  * @next: these varaible is the points to the next node
  *
  * Description: singly linked list 0x13-more_singly_linked_lists
- */
- 
+ */ 
 typedef struct listint_s
 {
 	int n;
@@ -20,6 +19,7 @@ typedef struct listint_s
 
 
 size_t print_listint(const listint_t *h);
+size_t listint_len(const listint_t *h);
 
 
 #endif
