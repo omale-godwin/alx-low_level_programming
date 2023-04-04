@@ -8,12 +8,13 @@
  */
 size_t listint_len(const listint_t *h)
 {
- size_t num = 0;
+ size_t numbs = 0;
 
- for (struct Node* curr = h; curr != NULL; curr = curr->next) {
-    num++;
+ while (h)
+ {
+ numbs++;
+ h = h->next;
+ }
+
+ return (numbs);
 }
-
- return (num);
-}
-
