@@ -8,12 +8,15 @@
  */
 size_t print_listint(const listint_t *h)
 {
- size_t num = 0;
+ const listint_t *curs = h;
+ size_t cnt = 0;
+ while(curs != NULL)
+ {
+    printf("%d\n", curs->n);
+    cnt +=1;
+    curs = curs->next;
 
- for (struct Node* curr = h; curr != NULL; curr = curr->next) {
-    printf("%d\n", curr->n);
-    num++;
-}
+ }
 
- return (num);
+ return (cnt);
 }
