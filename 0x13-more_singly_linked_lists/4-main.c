@@ -25,4 +25,8 @@ int main(void)
     free_listint(head);
     head = NULL;
     return (0);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 41057c7a8706e3ba7d38b7d799db813500bbeaf3
