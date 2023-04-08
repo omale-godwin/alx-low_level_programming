@@ -2,32 +2,32 @@
 
 
 /**
- * create_file - create a file with read/write access for user
- * @filename: name of file to create
+ * create_file - create file give read/write access to user
+ * @filename: file to create
  * @text_content: string to write to file
- * Return: 1 on success, -1 on failure
+ * Return: 1 on success, -1 on errors
  */
 int create_file(const char *filename, char *text_content)
 {
-int fd, rstatus, i;
+int files_data, file_read_status, i;
 
 if (filename == NULL)
 	return (-1);
 
-fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
+files_data = open(filename, O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
 
-if (fd == -1)
+if (files_data == -1)
 	return (-1);
 
 if (text_content)
 {
 	for (i = 0; text_content[i] != '\0'; i++)
 		;
-	rstatus = write(fd, text_content, i);
-	if (rstatus == -1)
+	file_read_status = write(files_data, text_content, i);
+	if (file_read_status == -1)
 		return (-1);
 }
 
-close(fd);
+close(files_data);
 return (1);
 }
