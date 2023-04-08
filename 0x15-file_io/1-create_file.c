@@ -31,3 +31,4 @@ if (text_content)
 close(files_data);
 return (1);
 }
+
