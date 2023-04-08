@@ -19,4 +19,8 @@ printf("%u\n", n);
 n = flip_bits(1024, 1025);
 printf("%u\n", n);
 return (0);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4f3ff1460b5b0c9384107df87f61c1490f8bf50c

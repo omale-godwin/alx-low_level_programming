@@ -10,6 +10,7 @@
  */
 int set_bit(unsigned long int *n, unsigned int index)
 {
+<<<<<<< HEAD
     if (index > 63)
         {
         return (-1);
@@ -17,3 +18,13 @@ int set_bit(unsigned long int *n, unsigned int index)
     *n = ((1UL << index) | *n);
     return (1);
 }
+=======
+if (index > 63)
+{
+return (-1);
+}
+
+*n = ((1UL << index) | *n);
+return (1);
+}
+>>>>>>> 4f3ff1460b5b0c9384107df87f61c1490f8bf50c
