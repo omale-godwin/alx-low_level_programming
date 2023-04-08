@@ -19,7 +19,7 @@ if (filename == NULL)
 	return (0);
 
 filed = open(filename, O_RDWR);
-if (file == -1)
+if (filed == -1)
 	return (0);
 
 buffer = malloc(sizeof(char) * letters);
@@ -43,4 +43,5 @@ free(buffer);
 close(filed);
 
 return (wcount);
+
 }
