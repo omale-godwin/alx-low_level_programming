@@ -20,7 +20,7 @@ int fd_to;
 ssize_t num_read;
 ssize_t num_written;
 char buffer[BUFFER_SIZE];
-struct stat st;  
+struct stat st;
 if (argc != 3)
 {
 dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", argv[0]);
@@ -46,9 +46,10 @@ exit(99);
 while ((num_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
 {
 num_written = write(fd_to, buffer, num_read);
-if (num_written != num_read) {
-    dprintf(STDERR_FILENO, "Error: Incomplete write to %s\n", argv[2]);
-    exit(99);
+if (num_written != num_read)
+{
+dprintf(STDERR_FILENO, "Error: Incomplete write to %s\n", argv[2]);
+exit(99);
 }
 }
 if (num_read == -1)
