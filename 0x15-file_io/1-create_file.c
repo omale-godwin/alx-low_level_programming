@@ -19,13 +19,13 @@ ssize_t text_len;
 ssize_t bytes_written;
 if (filename == NULL)
 {
-	return -1;
+	return (-1);
 }
 
 file = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
 if (file == -1)
 {
-	return -1;
+	return (-1);
 }
 
 if (text_content != NULL)
@@ -35,14 +35,15 @@ if (text_content != NULL)
 	if (bytes_written != text_len)
 	{
 		close(file);
-		return -1;
+		return (-1);
 	}
 }
 
-if (close(file) == -1) {
-	return -1;
+if (close(file) == -1)
+{
+	return (-1);
 }
 
-return 1;
+return (1);
 }
 
