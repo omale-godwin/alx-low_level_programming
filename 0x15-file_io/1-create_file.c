@@ -1,5 +1,10 @@
 #include "main.h"
-
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
 
 /**
  * create_file - create file give read/write access to user
@@ -9,26 +14,35 @@
  */
 int create_file(const char *filename, char *text_content)
 {
-int files_data, file_read_status, i;
-
+int file;
+ssize_t text_len;
+ssize_t bytes_written;
 if (filename == NULL)
-	return (-1);
-
-files_data = open(filename, O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
-
-if (files_data == -1)
-	return (-1);
-
-if (text_content)
 {
-	for (i = 0; text_content[i] != '\0'; i++)
-		;
-	file_read_status = write(files_data, text_content, i);
-	if (file_read_status == -1)
-		return (-1);
+	return -1;
 }
 
-close(files_data);
-return (1);
+file = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+if (file == -1)
+{
+	return -1;
+}
+
+if (text_content != NULL)
+{
+	text_len = strlen(text_content);
+	bytes_written = write(file, text_content, text_len);
+	if (bytes_written != text_len)
+	{
+		close(file);
+		return -1;
+	}
+}
+
+if (close(file) == -1) {
+	return -1;
+}
+
+return 1;
 }
 
