@@ -1,4 +1,8 @@
 #include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 
 
 /**
@@ -7,41 +11,38 @@
  * @letters: number of letters it read and print
  * Return:  the actual number of letters it read and print
 */
+ssize_t read_textfile(const char *filename, size_t letters) {
+    if (filename == NULL) {
+        return 0;
+    }
+    FILE *file;
+    file = fopen(filename, "r");
+    if (file == NULL) {
+        return 0;
+    }
+    char *buffer;
+    buffer = malloc(sizeof(char) * (letters + 1));
+    if (buffer == NULL) {
+        fclose(file);
+        return 0;
+    }
+    ssize_t bytes_read;
+    bytes_read = fread(buffer, sizeof(char), letters, file);
+    if (bytes_read <= 0) {
+        fclose(file);
+        free(buffer);
+        return 0;
+    }
 
-ssize_t read_textfile(const char *filename, size_t letters)
-{
+    ssize_t bytes_written;
+    bytes_written = write(STDOUT_FILENO, buffer, bytes_read);
+    if (bytes_written != bytes_read) {
+        fclose(file);
+        free(buffer);
+        return 0;
+    }
 
-int filed;
-ssize_t rcount, wcount;
-char *buffer;
-
-if (filename == NULL)
-	return (0);
-
-filed = open(filename, O_RDWR);
-if (filed == -1)
-	return (0);
-
-buffer = malloc(sizeof(char) * letters);
-if (buffer == NULL)
-{
-	free(buffer);
-	return (0);
-}
-
-rcount = read(filed, buffer, letters);
-if (rcount == -1)
-	return (0);
-
-wcount = write(STDOUT_FILENO, buffer, rcount);
-
-if (wcount == -1 || rcount != wcount)
-	return (0);
-
-free(buffer);
-
-close(filed);
-
-return (wcount);
-
+    fclose(file);
+    free(buffer);
+    return bytes_read;
 }
