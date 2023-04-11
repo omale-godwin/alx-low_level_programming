@@ -36,17 +36,17 @@ if (buffered == NULL)
 bytes_to_read = fread(buffered, sizeof(char), letters, filed);
 if (bytes_to_read <= 0)
 {
-	fclose(filed);
-	free(buffered);
-	return (0);
+fclose(filed);
+free(buffered);
+return (0);
 }
 
 bytes_written = write(STDOUT_FILENO, buffered, bytes_to_read);
 if (bytes_written != bytes_to_read)
 {
-	fclose(filed);
-	free(buffered);
-	return (0);
+fclose(filed);
+free(buffered);
+return (0);
 }
 
 fclose(filed);
