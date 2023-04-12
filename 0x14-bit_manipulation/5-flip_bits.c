@@ -17,7 +17,7 @@ for (i = 63; i >= 0; i--)
 {
 current = excl >> i;
 if (current & 1)
-    count++;
+count++;
 }
 
 return (count);
