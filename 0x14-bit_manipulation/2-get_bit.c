@@ -12,8 +12,8 @@ int get_bit(unsigned long int n, unsigned int index)
 int bitwise_value;
 if (index > 63)
 {
-    return (-1);
+return (-1);
 }
 bitwise_value = (n >> index) & 1;
-return bitwise_value;
+return (bitwise_value);
 }
