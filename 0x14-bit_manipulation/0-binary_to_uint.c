@@ -13,24 +13,24 @@ unsigned int intg;
 int length, base2;
 
 if (!b)
-        return (0);
+return (0);
 
 intg = 0;
 
 for (length = 0; b[length] != '\0'; length++)
-        ;
+;
 
 for (length--, base2 = 1; length >= 0; length--, base2 *= 2)
 {
-        if (b[length] != '0' && b[length] != '1')
-        {
-                return (0);
-        }
+if (b[length] != '0' && b[length] != '1')
+{
+        return (0);
+}
 
-        if (b[length] & 1)
-        {
-                intg += base2;
-        }
+if (b[length] & 1)
+{
+        intg += base2;
+}
 }
 
 return (intg);
