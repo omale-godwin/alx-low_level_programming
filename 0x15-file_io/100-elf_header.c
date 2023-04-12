@@ -25,14 +25,14 @@ void close_elf(int elf);
  */
 void check_elf(unsigned char *e_ident)
 {
-	int index;
+	int indx;
 
-	for (index = 0; index < 4; index++)
+	for (indx = 0; indx < 4; indx++)
 	{
-		if (e_ident[index] != 127 &&
-		    e_ident[index] != 'E' &&
-		    e_ident[index] != 'L' &&
-		    e_ident[index] != 'F')
+		if (e_ident[indx] != 127 &&
+		    e_ident[indx] != 'E' &&
+		    e_ident[indx] != 'L' &&
+		    e_ident[indx] != 'F')
 		{
 			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
 			exit(98);
@@ -48,15 +48,15 @@ void check_elf(unsigned char *e_ident)
  */
 void print_magic(unsigned char *e_ident)
 {
-	int index;
+	int indx;
 
 	printf(" Magic: ");
 
-	for (index = 0; index < EI_NIDENT; index++)
+	for (indx = 0; indx < EI_NIDENT; indx++)
 	{
-		printf("%02x", e_ident[index]);
+		printf("%02x", e_ident[indx]);
 
-		if (index == EI_NIDENT - 1)
+		if (indx == EI_NIDENT - 1)
 			printf("\n");
 		else
 			printf(" ");
@@ -312,3 +312,4 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	close_elf(o);
 	return (0);
 }
+
