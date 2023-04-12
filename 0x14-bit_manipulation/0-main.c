@@ -21,8 +21,4 @@ printf("%u\n", n);
 n = binary_to_uint("0000000000000000000110010010");
 printf("%u\n", n);
 return (0);
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 4f3ff1460b5b0c9384107df87f61c1490f8bf50c
