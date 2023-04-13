@@ -5,16 +5,6 @@
  */
 void free_listint(listint_t *head)
 {
-<<<<<<< HEAD
- listint_t *tmpt;
- while (head)
- {
- tmpt = head->next;
- free(head);
- head = tmpt;
- }
-}
-=======
  listint_t *vals;
  while (head)
  {
@@ -25,4 +15,3 @@ void free_listint(listint_t *head)
 }
  
 
->>>>>>> 41057c7a8706e3ba7d38b7d799db813500bbeaf3
