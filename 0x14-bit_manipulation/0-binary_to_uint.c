@@ -32,7 +32,6 @@ if (b[lenth] & 1)
 intg += bas2;
 }
 }
-
 return (intg);
 }
 
