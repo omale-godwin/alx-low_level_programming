@@ -1,37 +1,71 @@
+#include <stdio.h>
 #include "main.h"
 
+int binary_len(const char *b);
+int _power(int base, int pow);
+
 /**
- * binary_to_uint - a binary number function that convert to an
- * unsigned int.
- * @b: binary.
+ * binary_to_uint - converts a binary number to an unsigned int
+ * @b: String of zeros and ones
  *
- * Return: unsigned int.
+ * Return: Converted number.
  */
+
 unsigned int binary_to_uint(const char *b)
 {
-unsigned int intg;
-int lenth, bas2;
+	int max_power = binary_len(b) - 1;
+	int index, power;
+	unsigned int integer = 0;
 
-if (!b)
-return (0);
+	if (max_power < 0)
+		return (0);
 
-intg = 0;
+	for (index = 0, power = max_power; power >= 0; index++, power--)
+	{
+		if (b[index] == '1')
+			integer += _power(2, power);
+	}
 
-for (lenth = 0; b[lenth] != '\0'; lenth++)
-;
+	return (integer);
+}
 
-for (lenth--, bas2 = 1; lenth >= 0; lenth--, bas2 *= 2)
+/**
+ * binary_len - finds the length of a string of ones and zeroes
+ * @b: String of ones and zeroes
+ *
+ * Return: Length of string, or 0 if the string contains non-binary digit.
+ */
+
+int binary_len(const char *b)
 {
-if (b[lenth] != '0' && b[lenth] != '1')
-{
-return (0);
+	int len;
+
+	if (!b)
+		return (0);
+
+	for (len = 0; b[len]; len++)
+	{
+		if (b[len] != '0' && b[len] != '1')
+			return (-1);
+	}
+
+	return (len);
 }
 
-if (b[lenth] & 1)
-{
-intg += bas2;
-}
-}
-return (intg);
-}
+/**
+ * _power - raises a number to a power
+ * @base: String of zeros and ones
+ * @pow: Power to raise number to
+ *
+ * Return: Number raised.
+ */
 
+int _power(int base, int pow)
+{
+	int x, num = 1;
+
+	for (x = 0; x < pow; x++)
+		num *= base;
+
+	return (num);
+}
