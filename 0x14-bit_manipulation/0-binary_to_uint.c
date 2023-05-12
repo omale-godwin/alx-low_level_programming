@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include "main.h"
 
-int binary_len(const char *b);
-int _power(int base, int pow);
+int binary_lens(const char *b);
+int _powers(int base, int pow);
 
 /**
  * binary_to_uint - converts a binary number to an unsigned int
@@ -13,7 +13,7 @@ int _power(int base, int pow);
 
 unsigned int binary_to_uint(const char *b)
 {
-	int max_power = binary_len(b) - 1;
+	int max_power = binary_lens(b) - 1;
 	int index, power;
 	unsigned int integer = 0;
 
@@ -23,20 +23,20 @@ unsigned int binary_to_uint(const char *b)
 	for (index = 0, power = max_power; power >= 0; index++, power--)
 	{
 		if (b[index] == '1')
-			integer += _power(2, power);
+			integer += _powers(2, power);
 	}
 
 	return (integer);
 }
 
 /**
- * binary_len - finds the length of a string of ones and zeroes
+ * binary_lens - finds the length of a string of ones and zeroes
  * @b: String of ones and zeroes
  *
  * Return: Length of string, or 0 if the string contains non-binary digit.
  */
 
-int binary_len(const char *b)
+int binary_lens(const char *b)
 {
 	int len;
 
@@ -53,14 +53,14 @@ int binary_len(const char *b)
 }
 
 /**
- * _power - raises a number to a power
+ * _powers - raises a number to a power
  * @base: String of zeros and ones
  * @pow: Power to raise number to
  *
  * Return: Number raised.
  */
 
-int _power(int base, int pow)
+int _powers(int base, int pow)
 {
 	int x, num = 1;
 
@@ -69,3 +69,4 @@ int _power(int base, int pow)
 
 	return (num);
 }
+
